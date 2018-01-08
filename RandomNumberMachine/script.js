@@ -5,11 +5,8 @@ var result = [];
 
 function rysuj(){
 	 //zerowanie
- 	var dupa = document.getElementsByClassName('number');
  	$(".number").remove();
  for (var i = 0; i < result.length; i++) {
-
-
  	const newRandomNumber = document.createElement('div');
 
 	newRandomNumber.textContent = result[i];
@@ -18,8 +15,6 @@ function rysuj(){
 	const section = document.querySelector('section');
 	section.appendChild(newRandomNumber);
  };
-
-
 }
 
 
@@ -37,23 +32,24 @@ function losowanie(){
 
 
 	result.push(wynikLosowania);
-
- rysuj()
-
-	
+ 	rysuj()
 };
 
 
 
 randomButton.addEventListener("click", losowanie);
-
 clearButton.addEventListener("click", function(){
 	result=[];
 	rysuj();
-	console.log("dupa");
 });
 
-	
+const sortButton = document.getElementById('sort');
 
-
+sortButton.addEventListener('click', function(){
+	console.log(result);
+	result.sort(function(a,b){
+		return a-b;
+	});
+	rysuj();
+});
 
